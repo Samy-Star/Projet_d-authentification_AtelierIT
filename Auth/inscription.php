@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nom = trim($_POST['nom']);
     $prenoms = trim($_POST['prenoms']);
     $email = trim($_POST['email']);
-    $mdp = trim($_POST['mdp']);
+    $mot_de_passe = trim($_POST['mdp']);
 
     //Vérification du remplissage des champ
     if (empty($nom) || empty($prenoms) || empty($email)) {
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     //Vérification de la validité du mot de passe
-    if (!preg_match("/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/", $mdp)) {
+    if (!preg_match("/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/", $mot_de_passe)) {
         $errors [] = "Mot de passe invalide. Il doit contenir au moins une majuscule, un caractère spécial et avoir au moins 7 caractères";
     }
 
@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (empty($errors)) {
         //Hashage du mot de passe
-        $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
+        $mot_de_passeHash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
         $stmt = $pdo->prepare("INSERT INTO Utilisateurs(nom, prenoms, email, mdp) VALUES (?, ?, ?, ?)");
-        if($stmt->execute([$nom, $prenoms, $email, $mdpHash])) {
+        if($stmt->execute([$nom, $prenoms, $email, $mot_de_passeHash])) {
             $Utilisateur_id = $pdo->lastInsertId();
             
             //Connexion automatique de l'utilisateur
@@ -96,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <label for="email">Email</label>
             <input type="email" name="email" required>
 
-            <label for="mdp">Mot de passe</label>
-            <input type="password" name="mdp" required>
+            <label for="mot_de_passe">Mot de passe</label>
+            <input type="password" name="mot_de_passe" required>
 
             <button type="submit" class="button">S'inscrire</button>
         </form>
