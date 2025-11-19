@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $email = trim($_POST['email']);
     $mot_de_passe = trim($_POST['mot_de_passe']);
 
-    //Vérification du remplissage des champ
+    //Vérification du remplissage des champs
     if (empty($nom) || empty($prenoms) || empty($email)) {
         $errors [] = "Veuillez remplir ces champs";
     }
