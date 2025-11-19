@@ -37,7 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == $_POST) {
     }
 
     if (empty($errors)) {
-        
+        //Hashage du mot de passe
+        $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
+
+        $stmt = $pdo->prepare("INSERT INTO Utilisateurs(nom, prenoms, email, mdp) VALUES (?, ?, ?, ?)");
+        if($stmt->execute([$nom, $prenoms, $email, $mdpHash])) {
+            
+        }
     }
 
 }
