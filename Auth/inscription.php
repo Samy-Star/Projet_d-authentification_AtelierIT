@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //Hashage du mot de passe
         $mot_de_passeHash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
-        $stmt = $pdo->prepare("INSERT INTO Utilisateurs(nom, prenoms, email, mdp) VALUES (?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO Utilisateurs(nom, prenoms, email, mot_de_passe) VALUES (?, ?, ?, ?)");
         if($stmt->execute([$nom, $prenoms, $email, $mot_de_passeHash])) {
             $Utilisateur_id = $pdo->lastInsertId();
             
