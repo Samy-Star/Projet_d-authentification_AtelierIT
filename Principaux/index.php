@@ -2,10 +2,10 @@
 //Démarrage de la session et vérification de la connectivité de l'utilisateur
 session_start();
 ?>
-<?php include "others/header.php";?>
+<?php include "../others/header.php";?>
 
     <body>
-        <?php include "others/navbar.php";?>
+        <?php include "../others/navbar.php";?>
 
         <main>
             <section>
@@ -22,8 +22,8 @@ session_start();
             </section>
         </main>
 
-        <?php include "others/footer.php";?>
+        <?php include "../others/footer.php";?>
 
-        <script src="others/script.js"></script>
+        <script src="../others/script.js"></script>
     </body>
 </html>
