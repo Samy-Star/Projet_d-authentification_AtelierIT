@@ -2,14 +2,7 @@
 //Démarrage de la session et vérification de la connectivité de l'utilisateur
 session_start();
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Agence de voyage - Accueil</title>
-        <link rel="stylesheet" href="others/design.css">
-    </head>
+<?php include "others/header.php";?>
 
     <body>
         <?php include "others/navbar.php";?>
