@@ -18,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="../Auth/inscription.php">S'inscrire</a> <!--Bouton d'inscription-->
         <?php else :?>
             <!--Si l'utilisateur est connecté-->
-            <a href="accueil.php">Mon espace</a>
+            <a href="../accueil.php">Mon espace</a>
             <a href="../Principaux/deconnexion.php">Se deconnecter</a> <!--Bouton de déconnexion-->
         <?php endif; ?>
     </div>
