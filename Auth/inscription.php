@@ -6,6 +6,7 @@ include "../Configuration/DB.php";
 
 //
 $errors = [];
+$succes = "";
 
 if ($_SERVER['REQUEST_METHOD'] == $_POST) {
     //Récupération et sécurisation des données envoyées par le formulaire
@@ -42,8 +43,65 @@ if ($_SERVER['REQUEST_METHOD'] == $_POST) {
 
         $stmt = $pdo->prepare("INSERT INTO Utilisateurs(nom, prenoms, email, mdp) VALUES (?, ?, ?, ?)");
         if($stmt->execute([$nom, $prenoms, $email, $mdpHash])) {
+            $Utilisateur_id = $pdo->lastInsertId();
             
+            //Connexion automatique de l'utilisateur
+            $_SESSION["Utilisateur_id"] = $Utilisateur_id;
+            $_SESSION["Utilisateur_nom"] = $nom;
+            $_SESSION["Utilisateur_prenoms"] = $prenoms;
+            $_SESSION["Utilisateur_email"] = $email;
+
+            //Redirection vers la page d'accueil
+            header("Location: ../Principaux/accueil.php");
+            exit();
+        } else {
+            $errors [] = "Une erreur est survenue, veuillez réessayer plus tard";
         }
     }
 
 }
+?>
+
+<?php include "../others/header.php"; ?>
+<?php include "../others/navbar.php"; ?>
+
+<main>
+    <section class="form-section">
+        <h2>Inscription</h2>
+
+        <!--Messages en cas d'erreurs-->
+        <?php if (!empty($errors)) : ?>
+            <div class="errors">
+                <?php foreach ($errors as $error) : ?>
+                    <p><?php echo htmlspecialchars($error);?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <!--Messages de succes-->
+        <?php if (!empty($succes)) : ?>
+            <div class="success">
+                <p><?php echo htmlspecialchars($succes); ?></p>
+            </div>
+        <?php endif; ?>
+
+        <!--Formulaire d'inscription-->
+        <form id="registerForm" method="POST" action="">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" required>
+
+            <label for="prenom">Prenoms</label>
+            <input type="text" name="prenom" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+
+            <label for="mdp">Mot de passe</label>
+            <input type="password" name="mdp" required>
+
+            <button type="submit" class="button">S'inscrire</button>
+        </form>
+    </section>
+</main>
+
+<?php include "../others/footer.php"; ?>
