@@ -8,7 +8,7 @@ include "../Configuration/DB.php";
 $errors = [];
 $succes = "";
 
-if ($_SERVER['REQUEST_METHOD'] == $_POST) {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //Récupération et sécurisation des données envoyées par le formulaire
     $nom = trim($_POST['nom']);
     $prenoms = trim($_POST['prenoms']);
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == $_POST) {
     }
 
     //Vérification de la validité du mot de passe
-    if (!preg_match("/^(?=.[A-Z)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/", $mdp)) {
+    if (!preg_match("/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/", $mdp)) {
         $errors [] = "Mot de passe invalide. Il doit contenir au moins une majuscule, un caractère spécial et avoir au moins 7 caractères";
     }
 
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == $_POST) {
             <input type="text" name="nom" required>
 
             <label for="prenom">Prenoms</label>
-            <input type="text" name="prenom" required>
+            <input type="text" name="prenoms" required>
 
             <label for="email">Email</label>
             <input type="email" name="email" required>
