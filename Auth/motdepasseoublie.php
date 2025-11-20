@@ -43,3 +43,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 }
+?>
+
+<?php include "../others/header.php";?>
+<?php include "../others/navbar.php";?>
+
+<main>
+    <section class="form-section">
+        <h2>Mot de passe oublié</h2>
+
+        <?php if (!empty($errors)) : ?>
+            <div class="errors">
+                <?php foreach ($errors as $error) : ?>
+                    <p><?php echo htmlspecialchars($e);?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($succes)) : ?>
+            <div class="succes">
+                <?php echo htmlspecialchars($succes);?>
+            </div>
+        <?php endif; ?>
+
+        <form method="POST">
+            <label for="email">Entrez votre email</label>
+            <input type="email" name="email" required>
+
+            <button type="submit" class="button">Envoyer le code</button>
+        </form>
+    </section>
+</main>
+
+<?php include "../others/footer.php";?>
