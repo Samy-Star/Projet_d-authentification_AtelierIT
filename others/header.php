@@ -12,10 +12,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <title>Fly High</title>
 
         <!--Fichier CSS-->
-        <link rel="stylesheet" href="design.css">
+        <link rel="stylesheet" href="../others/design.css">
         <!--Fichier JS-->
         <script src="script.js" defer></script>
     </head>
-
-    <body></body>
-</html>
