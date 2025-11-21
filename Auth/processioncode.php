@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <main>
     <section class="form-section">
-        <h2>Code de vérification</h2>
+        <h2>Vérification du code de récupération</h2>
 
         <!--Affichage de erreurs-->
         <?php if (!empty($errors)) : ?>
