@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <main>
     <section class="form-section">
-        <h2>Nouveau mot de passe</h2>
+        <h2>Code de vérification</h2>
 
         <!--Affichage de erreurs-->
         <?php if (!empty($errors)) : ?>
@@ -72,8 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--Formulaire de vérification-->
         <form method="POST">
-            <label for="cmot_de_passe">Nouveau mot de passe</label>
-            <input type="password" name="mot_de_passe" maxlength="4" required>
+            <label for="code">Code de vérification </label>
+            <input type="text" name="code" maxlength="4" required>
             <button type="submit" class="button">Valider</button>
         </form>
     </section>
