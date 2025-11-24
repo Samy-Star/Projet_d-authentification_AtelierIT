@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //Vérification de l'existence de l'email dans la base
         $stmt = $pdo->prepare("SELECT id FROM Utilisateurs WHERE email = ?");
         $stmt->execute([$email]);
+        //$user = $stmt->fetch();
 
         if ($stmt->rowCount() === 0) {
             $errors[] = "Il n'existe aucun compte avec cet email";
@@ -28,8 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $expiration = date("Y-m-d H:i:s", time() + 300);
 
             //Stockage dans la base de données
-            $update = $pdo->prepare("UPDATE Utilisateurs SET reset_code = ? WHERE email = ?");
-            $update->execute([$email, $code, $expiration]);
+            $insert = $pdo->prepare(
+                "INSERT INTO reinitialisation_MDP 
+                (Utilisateur_id, reset_code, expires_at, created_at)
+                VALUES (?, ?, ?, NOW())
+                ");
+            $insert->execute([$user["id"], $code, $expiration]);
 
             $_SESSION["email_recup"] = $email;
 
@@ -55,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php if (!empty($errors)) : ?>
             <div class="errors">
                 <?php foreach ($errors as $error) : ?>
-                    <p><?php echo htmlspecialchars($e);?></p>
+                    <p><?php echo htmlspecialchars($error);?></p>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>

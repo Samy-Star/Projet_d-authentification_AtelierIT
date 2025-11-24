@@ -2,8 +2,8 @@
 session_start();
 
 //Vérification de la connectivité de l'utilisateur
-if (isset($_SESSION["Utilisateur_id"])) {
-    header("Location: ../Authentification/connexion.php");
+if (!isset($_SESSION["Utilisateur_id"])) {
+    header("Location: ../Auth/connexion.php");
     exit();
 }
 
@@ -17,6 +17,10 @@ $prenoms = $_SESSION["Utilisateur_prenoms"];
 
 <main>
     <section class="welcome-section">
-        <h2><b>Bienvenue <?php htmlspecialchars($prenoms. "" .$nom);?> </b></h2>
+        <h2><b>Bienvenue <i><?php echo htmlspecialchars($prenoms. " " .$nom);?> 😄🎉</i></b></h2>
+
+        <!--a href="deconnexion.php" class="button logout-btn">Se déconnecter</!--a-->
     </section>
 </main>
+
+<?php include "../others/footer.php"; ?>
