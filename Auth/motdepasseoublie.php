@@ -17,33 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //Vérification de l'existence de l'email dans la base
         $stmt = $pdo->prepare("SELECT id FROM Utilisateurs WHERE email = ?");
         $stmt->execute([$email]);
-        //$user = $stmt->fetch();
+        $user = $stmt->fetch();
 
         if ($stmt->rowCount() === 0) {
             $errors[] = "Il n'existe aucun compte avec cet email";
         } else {
-            //Génération du code de récupération
-            $code = random_int(1000, 9999);
-
-            //Durée de vie du code
-            $expiration = date("Y-m-d H:i:s", time() + 300);
-
-            //Stockage dans la base de données
-            $insert = $pdo->prepare(
-                "INSERT INTO reinitialisation_MDP 
-                (Utilisateur_id, reset_code, expires_at, created_at)
-                VALUES (?, ?, ?, NOW())
-                ");
-            $insert->execute([$user["id"], $code, $expiration]);
-
-            $_SESSION["email_recup"] = $email;
-
-            //Envoi du mail de récupération
-            mail($email, "Code de récupération", "Votre code : $code");
-            $succes = "Un code de vérification a été envoyé à votre email. Veuillez vérifier votre boite mail";
-
-            //Redirection vers la page de vérification du code
-            header("Location: processioncode.php");
+            $_SESSION["reset_user_id"] = $user["id"];
+            //Redirection vers la page de reinitialisation du mot de passe
+            header("Location: initialisation_mdp.php");
             exit();
         }
     }
