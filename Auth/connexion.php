@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <?php include "../others/navbar.php";?>
 
 <main>
-    <section class="form-selection">
+    <section class="form-section">
         <h2>Connexion</h2>
 
         <?php if (!empty($errors)) : ?>

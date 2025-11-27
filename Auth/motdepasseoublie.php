@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //Vérification de l'existence de l'email dans la base
         $stmt = $pdo->prepare("SELECT id FROM Utilisateurs WHERE email = ?");
         $stmt->execute([$email]);
-        $user = $stmt->fetch();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($stmt->rowCount() === 0) {
+        if ($user === false) {
             $errors[] = "Il n'existe aucun compte avec cet email";
         } else {
             $_SESSION["reset_user_id"] = $user["id"];
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <label for="email">Entrez votre email</label>
             <input type="email" name="email" required>
 
-            <button type="submit" class="button">Envoyer le code</button>
+            <button type="submit" class="button">Valider</button>
         </form>
     </section>
 </main>
