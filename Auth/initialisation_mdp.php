@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($stmt->execute([$mot_de_passeHash, $Utilisateur_id])){
             //Nettoyage des variables liées à la session de réinitialisation
             unset($_SESSION["reset_user_id"]);
-            unset($_SESSION["reset_verified"]);
 
             //Redirection vers la page de connexion
             $succes = "Votre mot de passe a été réinitialisé avec succès";

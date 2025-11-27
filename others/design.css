@@ -1,71 +1,264 @@
-/* --- Background général --- */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #dbe9ff, #ffd6e8, #ffe2d1);
-    height: 100vh;
+/* Variables pour les couleurs Pastels */
+:root {
+    --couleur-primaire: #AEC6CF; /* Bleu Ciel Pastel (boutons, navbar) */
+    --couleur-secondaire: #F0F8FF; /* Blanc cassé/Bleu très pâle (arrière-plan) */
+    --couleur-accent: #FFB3BA; /* Rose Pâle Pastel (hover, succès) */
+    --couleur-texte-sombre: #36454F; /* Gris Ardoise (texte principal) */
+    --couleur-texte-clair: #FFFFFF; /* Blanc */
+    --couleur-erreur: #FF6961; /* Rouge Corail (erreurs) */
+    --couleur-footer: #D3D3D3; /* Gris clair */
+    --box-shadow-faible: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Rénitialisation et Base --- */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-texte-sombre);
+    line-height: 1.6;
+    min-height: 100vh; /* S'assure que le corps prend toute la hauteur */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1; /* Permet à la zone principale de prendre l'espace disponible */
+    padding: 20px;
+}
+
+a {
+    color: var(--couleur-primaire);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--couleur-accent);
+}
+
+/* --- Navigation Bar (navbar.php) --- */
+.navbar {
+    background-color: var(--couleur-primaire);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    box-shadow: var(--box-shadow-faible);
 }
 
-/* --- Bloc formulaire (identique inscription / connexion) --- */
-.form-container {
-    background: #fff;
-    padding: 40px 50px;
-    width: 450px;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* --- Titre --- */
-.form-container h1 {
-    text-align: center;
-    color: #0057b8;
-    margin-bottom: 35px;
-    font-size: 32px;
-}
-
-/* --- Labels --- */
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #444;
-}
-
-/* --- Champs --- */
-input {
-    width: 100%;
-    padding: 14px;
-    border: 2px solid #d5e4ff;
-    border-radius: 10px;
-    margin-bottom: 22px;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s;
-}
-
-input:focus {
-    border-color: #599bff;
-    box-shadow: 0 0 6px rgba(89,155,255,0.4);
-}
-
-/* --- Bouton --- */
-.btn-submit {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(to right, #0d6efd, #ff7f50);
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
+.navbar span {
+    font-size: 1.5em;
     font-weight: bold;
-    transition: 0.3s ease-in-out;
+    color: var(--couleur-texte-clair);
 }
 
-.btn-submit:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+.nav-links a {
+    color: var(--couleur-texte-clair);
+    margin-left: 20px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-texte-sombre);
+}
+
+/* --- Section d'Accueil (index.php) --- */
+section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+section > div {
+    background-color: var(--couleur-texte-clair);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-faible);
+}
+
+section h1 {
+    font-size: 2.5em;
+    color: var(--couleur-primaire);
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--couleur-texte-sombre);
+}
+
+/* --- Boutons Génériques --- */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 5px;
+    background-color: var(--couleur-primaire);
+    color: var(--couleur-texte-clair);
+    border: none;
+    border-radius: 50px; /* Coins arrondis pour un style plus doux */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-texte-sombre);
+    transform: translateY(-2px); /* Petit effet 3D */
+}
+
+/* --- Sections de Formulaires (connexion/inscription/mdp) --- */
+.form-section {
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--couleur-texte-clair);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-faible);
+    text-align: left;
+}
+
+.form-section h2 {
+    text-align: center;
+    color: var(--couleur-primaire);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+/* Messages d'Erreurs et de Succès */
+.errors, .success {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid transparent;
+}
+
+.errors {
+    background-color: #FFECEC; /* Fond très pâle pour les erreurs */
+    color: var(--couleur-erreur);
+    border-color: var(--couleur-erreur);
+}
+
+.success {
+    background-color: #E6FFE6; /* Fond vert très pâle pour le succès */
+    color: #3C763D; /* Texte vert foncé */
+    border-color: #5CB85C;
+}
+
+.errors p, .success p {
+    margin: 5px 0;
+}
+
+/* Formulaire */
+.form-section label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--couleur-texte-sombre);
+}
+
+.form-section input[type="text"],
+.form-section input[type="email"],
+.form-section input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-section input:focus {
+    border-color: var(--couleur-primaire);
+    outline: none;
+}
+
+.form-section .button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-section .info {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+/* --- Section Bienvenue (accueil.php) --- */
+.welcome-section {
+    text-align: center;
+}
+
+.welcome-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--couleur-texte-sombre);
+}
+
+.welcome-section i {
+    color: var(--couleur-primaire);
+    font-style: normal;
+}
+
+/* --- Footer (footer.php) --- */
+.footer {
+    background-color: var(--couleur-footer);
+    color: var(--couleur-texte-sombre);
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: var(--couleur-texte-sombre);
+    margin: 0 10px;
+    text-decoration: underline;
+}
+
+.footer a:hover {
+    color: var(--couleur-primaire);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    section > div {
+        padding: 30px;
+    }
+
+    section h1 {
+        font-size: 2em;
+    }
+
+    .form-section {
+        margin: 20px;
+        padding: 20px;
+    }
 }
