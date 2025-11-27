@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <input type="email" name="email" required>
 
             <label>Mot de passe</label>
-            <input type="mot_de_passe" name="mot_de_passe" required>
+            <input type="password" name="mot_de_passe" required>
 
             <button type="submit" class="button">Se connecter</button>
 

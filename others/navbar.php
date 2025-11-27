@@ -7,19 +7,18 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <nav class="navbar">
     <div>
-        <img src="">
         <span>Fly High</span>
     </div>
 
     <div class="nav-links">
-        <?php if (!isset($_SESSION["Utilisateur_id"])) : ?> 
-            <!--Si l'utilisateur n'est pas connecter-->
+        <?php if (isset($_SESSION["Utilisateur_id"])) : ?> 
+            <!--Si l'utilisateur est pas connecter-->
+             <a href="/Authentificator/Principaux/deconnexion.php">Se deconnecter</a> <!--Bouton de déconnexion-->
+        <?php else :?>
+            <!--Si l'utilisateur n'est connecté-->
+            <!--a href="/Authentificator/Principaux/accueil.php">Mon espace</!--a-->
             <a href="/Authentificator/Auth/connexion.php">Se connecter</a> <!--Bouton de connexion-->
             <a href="/Authentificator/Auth/inscription.php">S'inscrire</a> <!--Bouton d'inscription-->
-        <?php else :?>
-            <!--Si l'utilisateur est connecté-->
-            <a href="/Authentificator/Principaux/accueil.php">Mon espace</a>
-            <a href="/Authentificator/Principaux/deconnexion.php">Se deconnecter</a> <!--Bouton de déconnexion-->
         <?php endif; ?>
     </div>
 </nav>

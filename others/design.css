@@ -1,131 +1,71 @@
-/* Reset minimaliste */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-/* Corps de la page */
+/* --- Background général --- */
 body {
-    background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.navbar div:first-child {
-    display: flex;
-    align-items: center;
-}
-
-.navbar img {
-    height: 40px;
-    margin-right: 0.8rem;
-}
-
-.nav-links a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: #555;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #1e88e5;
-}
-
-/* Section principale */
-main section {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #dbe9ff, #ffd6e8, #ffe2d1);
+    height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+}
+
+/* --- Bloc formulaire (identique inscription / connexion) --- */
+.form-container {
+    background: #fff;
+    padding: 40px 50px;
+    width: 450px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* --- Titre --- */
+.form-container h1 {
     text-align: center;
-    padding: 6rem 2rem;
-    background: rgba(255, 255, 255, 0.5);
-    margin: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.05);
-    backdrop-filter: blur(10px);
-    transition: transform 0.5s ease;
+    color: #0057b8;
+    margin-bottom: 35px;
+    font-size: 32px;
 }
 
-main section:hover {
-    transform: translateY(-5px);
+/* --- Labels --- */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: #607d8b;
-    margin-bottom: 1rem;
+/* --- Champs --- */
+input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d5e4ff;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
 }
 
-p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    color: #455a64;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+input:focus {
+    border-color: #599bff;
+    box-shadow: 0 0 6px rgba(89,155,255,0.4);
 }
 
-/* Boutons */
-.button {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    margin: 0.5rem;
-    border-radius: 50px;
+/* --- Bouton --- */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
     border: none;
-    background: linear-gradient(45deg, #ffccbc, #ffe0b2);
-    color: #555;
-    font-weight: 500;
+    border-radius: 10px;
+    background: linear-gradient(to right, #0d6efd, #ff7f50);
+    color: white;
+    font-size: 17px;
     cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
 }
 
-.button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-}
-
-/* Footer */
-.footer {
-    margin-top: auto;
-    padding: 2rem 3rem;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.footer a {
-    text-decoration: none;
-    color: #1e88e5;
-}
-
-.footer a:hover {
-    text-decoration: underline;
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
