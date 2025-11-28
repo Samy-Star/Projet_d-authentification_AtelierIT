@@ -3,14 +3,14 @@
     --couleur-primaire: #AEC6CF; /* Bleu Ciel Pastel (boutons, navbar) */
     --couleur-secondaire: #F0F8FF; /* Blanc cassé/Bleu très pâle (arrière-plan) */
     --couleur-accent: #FFB3BA; /* Rose Pâle Pastel (hover, succès) */
-    --couleur-texte-sombre: #36454F; /* Gris Ardoise (texte principal) */
+    --couleur-texte-sombre: #67747c; /* Gris Ardoise (texte principal) */
     --couleur-texte-clair: #FFFFFF; /* Blanc */
     --couleur-erreur: #FF6961; /* Rouge Corail (erreurs) */
     --couleur-footer: #D3D3D3; /* Gris clair */
     --box-shadow-faible: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Rénitialisation et Base --- */
+/* --- Réinitialisation et Base --- */
 * {
     margin: 0;
     padding: 0;

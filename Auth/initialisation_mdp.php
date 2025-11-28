@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php if (!empty($errors)) : ?>
             <div class="errors">
                 <?php foreach ($errors as $error) : ?>
-                    <p><?php echo htmlspecialchars($errors);?></p>
+                    <p><?php echo htmlspecialchars($error);?></p>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <label for="mot_de_passe2">Confirmer le nouveau mot de passe</label>
             <input type="password" name="mot_de_passe2"required>
-            
+
             <button type="submit" class="button">Confirmer</button>
         </form>
     </section>
