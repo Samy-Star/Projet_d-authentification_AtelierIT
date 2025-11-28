@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //Redirection vers la page de reinitialisation du mot de passe
             header("Location: initialisation_mdp.php");
             exit();
-        }
+        } 
     }
 }
 ?>
@@ -47,12 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php endif; ?>
 
         <?php if (!empty($succes)) : ?>
-            <div class="succes">
+            <div class="success">
                 <?php echo htmlspecialchars($succes);?>
             </div>
         <?php endif; ?>
 
-        <form method="POST">
+        <form method="POST" action="motdepasseoublie.php">
             <label for="email">Entrez votre email</label>
             <input type="email" name="email" required>
 

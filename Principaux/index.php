@@ -14,8 +14,8 @@
                     <p>Découvrez le mode à votre rythme</p>
                     
                     <?php if (!isset($_SESSION['Utilisateur_id'])):?>
-                        <a href="../Auth/connexion.php" class="button">Se connecter</!--a-->
-                        <a href="../Auth/inscription.php" class="button">S'inscrire</a>
+                        <!--a href="../Auth/connexion.php" class="button">Se connecter</!--a-->
+                        <!--a href="../Auth/inscription.php" class="button">S'inscrire</!--a-->
                     <?php else :?> <!--Redirection vers la page d'accueil si l'utilisateur est connecté-->
                         <a href="accueil.php" class="button">Accéder à mon compte</a>
                     <?php endif;?>

@@ -6,7 +6,7 @@ $errors = [];
 $succes = "";
 
 //Vérifier que l'utilisateur est bien passé par l'étape du code de récupération
-if (!isset($_SESSION["reset_user_id"]) || !isset( $_SESSION["reset_verified"])) {
+if (!isset($_SESSION["reset_user_id"])) {
     header("Location: motdepasseoublie.php");
     exit();
 }
@@ -72,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <label for="mot_de_passe2">Confirmer le nouveau mot de passe</label>
             <input type="password" name="mot_de_passe2"required>
+            
             <button type="submit" class="button">Confirmer</button>
         </form>
     </section>

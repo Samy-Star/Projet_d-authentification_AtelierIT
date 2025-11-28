@@ -14,5 +14,5 @@ if (session_status() === PHP_SESSION_NONE) {
         <!--Fichier CSS-->
         <link rel="stylesheet" href="../others/design.css">
         <!--Fichier JS-->
-        <script src="script.js" defer></script>
+        <!--script src="script.js" defer></!--script-->
     </head>
